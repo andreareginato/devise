@@ -29,7 +29,14 @@ module Devise
       end
     end
 
-    initializer "devise.secret_key" do
+    initializer "devise.secrets" do
+      if config.respond_to?(:secrets)
+        Devise.secret_key ||= config.secrets.devise_secret_key
+        Devise.pepper     ||= config.secrets.devise_pepper
+      end
+    end
+
+    initializer "devise.token_generator" do
       Devise.token_generator ||=
         if secret_key = Devise.secret_key
           Devise::TokenGenerator.new(

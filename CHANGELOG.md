@@ -1,3 +1,10 @@
+### Unreleased
+
+* enhancements
+  * Devise can read the configurations for its `secret_key` and `pepper` from
+    the `config/secrets.yml` file. Move these settings from your initializer to
+    the `devise_secret_key` and `devise_pepper` (if necessary) to your `secrets.yml` file.
+
 ### 3.2.2
 
 * bug fix
