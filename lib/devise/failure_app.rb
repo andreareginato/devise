@@ -42,7 +42,6 @@ module Devise
 
     def http_auth
       self.status = 401
-      self.headers["WWW-Authenticate"] = %(Basic realm=#{Devise.http_authentication_realm.inspect}) if http_auth_header?
       self.content_type = request.format.to_s
       self.response_body = http_auth_body
     end
